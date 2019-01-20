@@ -14,11 +14,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-    @Bean
-    public TomcatServletWebServerFactory tomcatServletWebServerFactory(){
-        TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
-        tomcat.setPort(6000);
-        return tomcat;
-    }
+//    @Bean
+//    public TomcatServletWebServerFactory tomcatServletWebServerFactory(){
+//        TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
+//        tomcat.setPort(6000);
+//        return tomcat;
+//    }
 
 }

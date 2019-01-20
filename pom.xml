@@ -18,6 +18,10 @@
         <module>order</module>
         <module>power</module>
         <module>power1</module>
+        <module>eureka3000</module>
+        <module>eureka3001</module>
+        <module>eureka3002</module>
+        <module>eureka</module>
         <module>eureka</module>
     </modules>
 
