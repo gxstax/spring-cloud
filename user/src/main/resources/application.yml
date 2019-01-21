@@ -3,7 +3,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:3000/eureka/ #eureka服务端提供的注册地址 参考服务端配置的这个
+      defaultZone: http://eureka3000.com:3000/eureka/,http://eureka3001.com:3001/eureka/,http://eureka3002.com:3002/eureka/ #eureka服务端提供的注册地址 参考服务端配置的这个
   instance:
     instance-id: user-0 #此实例注册到eureka服务端的唯一的实例ID
     prefer-ip-address: true #是否显示ip地址

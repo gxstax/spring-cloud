@@ -19,6 +19,8 @@ import java.util.Map;
 @RestController
 public class UserController {
 
+    private static final String POWER_URL= "http://SERVER-POWER0";
+
     @Autowired
     RestTemplate restTemplate;
 
@@ -31,6 +33,6 @@ public class UserController {
 
     @RequestMapping("/getPower")
     public R getPower() {
-        return R.success("操作成功", restTemplate.getForObject("http://localhost:80/getPower.do", Object.class));
+        return R.success("操作成功", restTemplate.getForObject(POWER_URL + "/getPower.do", Object.class));
     }
 }
