@@ -53,7 +53,7 @@ public class AntRule extends AbstractLoadBalancerRule {
                 }
 
                 int index = this.rand.nextInt(serverCount);
-
+                index = 0;
                 // 如果这次随机的是需要跳过的下标，则重新随机一个新的下标
                 if(index == skipIndexVal){
                     index = this.rand.nextInt(serverCount);

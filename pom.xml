@@ -21,6 +21,7 @@
         <module>eureka3000</module>
         <module>eureka3001</module>
         <module>eureka3002</module>
+        <module>order1</module>
     </modules>
 
 

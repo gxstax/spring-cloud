@@ -1,5 +1,6 @@
 package com.ant.controller;
 
+import com.ant.service.PowerFeignClient;
 import com.ant.util.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +20,15 @@ import java.util.Map;
 @RestController
 public class UserController {
 
-    private static final String POWER_URL= "http://SERVER-POWER0";
+    private static final String POWER_URL= "http://SERVER-POWER";
+
+    private static final String ORDER_URL= "http://SERVER-ORDER";
 
     @Autowired
     RestTemplate restTemplate;
+
+    @Autowired
+    private PowerFeignClient powerFeignClient;
 
     @RequestMapping("/getUser")
     public R getUser() {
@@ -31,8 +37,18 @@ public class UserController {
         return R.success("返回成功", map);
     }
 
+    @RequestMapping("/getOrder")
+    public R getOrder() {
+        return R.success("操作成功", restTemplate.getForObject(ORDER_URL + "/getOrder.do", Object.class));
+    }
+
     @RequestMapping("/getPower")
     public R getPower() {
         return R.success("操作成功", restTemplate.getForObject(POWER_URL + "/getPower.do", Object.class));
+    }
+
+    @RequestMapping("/getFeign")
+    public R getFeign() {
+        return R.success("操作成功", powerFeignClient.getPower());
     }
 }
