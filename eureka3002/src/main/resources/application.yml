@@ -7,7 +7,6 @@ eureka:
   instance:
     hostname: eureka3002.com
 
-
   client:
     registerWithEureka: true #不要把自己作为一个客户端注册到自己身上
     fetchRegistry: true #不需要从服务端获取注册信息（因为在这里自己就是服务端，而且已经禁用自己的注册了）
