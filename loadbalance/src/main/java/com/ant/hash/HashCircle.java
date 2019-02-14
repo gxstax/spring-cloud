@@ -1,7 +1,6 @@
 package com.ant.hash;
 
 import com.ant.ServerIps;
-
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -23,6 +22,7 @@ public class HashCircle {
 
     public static void main(String[] args) {
 
+        // 初始化服务TreeMap
         for (String server:ServerIps.SERVER_LST) {
             serverTreeMap.put(getHash(server), server);
             for (int i = 0; i < 2; i++) {
@@ -30,18 +30,27 @@ public class HashCircle {
                 serverTreeMap.put(getHash(serverstr), serverstr);
             }
         }
-
-        System.out.println(getClient("192.137.2.02"));
+        System.out.println(getClient("192.207.2.02"));
     }
 
+    /**
+     * 获取服务
+     * @param client
+     * @return
+     */
     public static String getClient(String client) {
         int hash = getHash(client);
 
         SortedMap<Integer, String> subServerMap = serverTreeMap.tailMap(hash);
 
-        return subServerMap.get(subServerMap.firstKey());
+        return strTrans(subServerMap.get(subServerMap.firstKey()));
     }
 
+    /**
+     * 简单hash算法实现
+     * @param str
+     * @return
+     */
     public static int getHash(String str) {
         final int p = 16777619;
         int hash = (int) 2166136261L;
@@ -58,5 +67,17 @@ public class HashCircle {
             hash = Math.abs(hash);
         }
         return hash;
+    }
+
+    /**
+     * 服务名称转换
+     * @param str
+     * @return
+     */
+    public static String strTrans(String str) {
+        if (str.contains("VN")) {
+            return str.substring(0, str.indexOf("V"));
+        }
+        return str;
     }
 }

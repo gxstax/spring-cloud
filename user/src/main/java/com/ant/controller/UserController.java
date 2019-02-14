@@ -2,6 +2,7 @@ package com.ant.controller;
 
 import com.ant.service.PowerFeignClient;
 import com.ant.util.R;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,7 +49,12 @@ public class UserController {
     }
 
     @RequestMapping("/getFeign")
+    @HystrixCommand(fallbackMethod = "getFeignFullBack")
     public R getFeign() {
         return R.success("操作成功", powerFeignClient.getPower());
+    }
+
+    public R getFeignFullBack() {
+        return R.error("系统维护中!!!请稍后重试!!!");
     }
 }
