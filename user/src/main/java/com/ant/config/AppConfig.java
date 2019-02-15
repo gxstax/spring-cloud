@@ -1,5 +1,7 @@
 package com.ant.config;
 
+import com.ant.rule.AntRule;
+import com.netflix.loadbalancer.IRule;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -23,10 +25,10 @@ public class AppConfig {
         return new RestTemplate();
     }
 
-//    @Bean
-//    public IRule iRule(){
-//        return new AntRule();
-//    }
+    @Bean
+    public IRule iRule(){
+        return new AntRule();
+    }
 
 //    @Bean
 //    public TomcatServletWebServerFactory tomcat(){

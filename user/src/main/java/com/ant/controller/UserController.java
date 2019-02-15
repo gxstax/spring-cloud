@@ -3,6 +3,7 @@ package com.ant.controller;
 import com.ant.service.PowerFeignClient;
 import com.ant.util.R;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,13 +45,24 @@ public class UserController {
     }
 
     @RequestMapping("/getPower")
+    @HystrixCommand(fallbackMethod = "getFeignFullBack", threadPoolKey ="power",
+            threadPoolProperties = {
+                    @HystrixProperty(name = "coreSize", value = "5")
+            }
+    )
     public R getPower() {
+        System.out.println("调用了getPower()方法......");
         return R.success("操作成功", restTemplate.getForObject(POWER_URL + "/getPower.do", Object.class));
     }
 
     @RequestMapping("/getFeign")
-    @HystrixCommand(fallbackMethod = "getFeignFullBack")
+    @HystrixCommand(fallbackMethod = "getFeignFullBack", threadPoolKey ="power",
+            threadPoolProperties = {
+                @HystrixProperty(name = "coreSize", value = "5")
+            }
+            )
     public R getFeign() {
+        System.out.println("调用了该方法......");
         return R.success("操作成功", powerFeignClient.getPower());
     }
 

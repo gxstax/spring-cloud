@@ -13,8 +13,8 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  */
 @SpringBootApplication
 @EnableEurekaServer
-public class AppOrder {
+public class AppOrderService {
     public static void main(String[] args) {
-        SpringApplication.run(AppOrder.class);
+        SpringApplication.run(AppOrderService.class);
     }
 }
