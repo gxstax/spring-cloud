@@ -1,34 +1,24 @@
 server:
-  port: 5000
+  port: 9002
 eureka:
   client:
     serviceUrl:
       defaultZone: http://eureka3000.com:3000/eureka/ #eureka服务端提供的注册地址 参考服务端配置的这个
   instance:
-    instance-id: user-0 #此实例注册到eureka服务端的唯一的实例ID
+    instance-id: zuul-2 #此实例注册到eureka服务端的唯一的实例ID
     prefer-ip-address: true #是否显示ip地址
     leaseRenewalIntervalInSeconds: 10 #eureka客户端需要多长时间发送心跳给eureka服务器，表明它仍然活着, 默认为30秒（与下面配置的单位都是秒）
     leaseExpirationDurationInSeconds: 30 #Eureka服务器在接收到实例的最后一次发出的心跳后，需要等待多久才可以将此实例删除，默认90秒
 
 spring:
   application:
-    name: client-user #此实例注册到eureka服务端的name
+    name: zuul-server #此实例注册到eureka服务端的name
 
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 2000 # hystrix超时时间
-      circuitBreaker:
-        requestVolumeThreshold: 5 #熔断失败次数
-#        sleepWindowInMilliseconds: 5000 # 设置多长时间再检查是否服务正常，如果还是失败则继续短路
-
-  threadpool:
-    default:
-      coreSize: 10
-
-feign:
-  hystrix:
-    enabled: true
+zuul:
+  routes:
+    power:
+      serviceId: server-power
+      path: /power/**
+  ignored-services: server-power
+#  prefix: /api
+#  strip-prefix: false  #是否跳过前缀名

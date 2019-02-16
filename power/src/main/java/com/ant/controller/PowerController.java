@@ -22,7 +22,7 @@ public class PowerController {
 //        if(name == null) {
 //            throw new Exception();
 //        }
-        Thread.sleep(10000);
+//        Thread.sleep(10000);
         return map;
     }
 }
