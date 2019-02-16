@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,7 +44,7 @@ public class UserController {
     }
 
     @RequestMapping("/getPower")
-    @HystrixCommand(fallbackMethod = "getFeignFullBack", threadPoolKey ="power",
+    @HystrixCommand(fallbackMethod = "getFeignFallBack", threadPoolKey ="power",
             threadPoolProperties = {
                     @HystrixProperty(name = "coreSize", value = "5")
             }
@@ -56,17 +55,15 @@ public class UserController {
     }
 
     @RequestMapping("/getFeign")
-    @HystrixCommand(fallbackMethod = "getFeignFullBack", threadPoolKey ="power",
-            threadPoolProperties = {
-                @HystrixProperty(name = "coreSize", value = "5")
-            }
-            )
+//    @HystrixCommand(threadPoolKey = "getFeign",
+//        threadPoolProperties = { @HystrixProperty(name = "coreSize", value = "5")}
+//    )
     public R getFeign() {
         System.out.println("调用了该方法......");
         return R.success("操作成功", powerFeignClient.getPower());
     }
 
-    public R getFeignFullBack() {
+    public R getFeignFallBack() {
         return R.error("系统维护中!!!请稍后重试!!!");
     }
 }

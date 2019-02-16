@@ -25,10 +25,10 @@ public class AppConfig {
         return new RestTemplate();
     }
 
-    @Bean
-    public IRule iRule(){
-        return new AntRule();
-    }
+//    @Bean
+//    public IRule iRule(){
+//        return new AntRule();
+//    }
 
 //    @Bean
 //    public TomcatServletWebServerFactory tomcat(){

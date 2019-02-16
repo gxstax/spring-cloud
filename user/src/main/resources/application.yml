@@ -20,7 +20,7 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 20000 # hystrix超时时间
+            timeoutInMilliseconds: 2000 # hystrix超时时间
       circuitBreaker:
         requestVolumeThreshold: 5 #熔断失败次数
 #        sleepWindowInMilliseconds: 5000 # 设置多长时间再检查是否服务正常，如果还是失败则继续短路
@@ -28,3 +28,7 @@ hystrix:
   threadpool:
     default:
       coreSize: 10
+
+feign:
+  hystrix:
+    enabled: true
