@@ -26,6 +26,7 @@
         <module>zuul</module>
         <module>zuul9001</module>
         <module>zuul9002</module>
+        <module>hystrix-dashboard</module>
     </modules>
 
 
