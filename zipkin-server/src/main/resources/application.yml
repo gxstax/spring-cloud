@@ -1,0 +1,8 @@
+managerment:
+  metrics:
+    web:
+      server:
+        autoTimeRequests: false
+
+server:
+  port: 9000
