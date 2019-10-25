@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @datetime 2019/1/22 9:08
  * @Version 1.0
  */
-@FeignClient(name = "SERVER-POWER", fallback = PowerFeignFallBack.class)
+@FeignClient(name = "SERVER-POWER", fallbackFactory = FallBackFactory.class)
 public interface PowerFeignClient {
 
     @RequestMapping("/getPower.do")

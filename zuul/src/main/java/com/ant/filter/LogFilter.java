@@ -41,6 +41,8 @@ public class LogFilter extends ZuulFilter{
     public Object run() throws ZuulException {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
+        System.out.println("request:" + ctx.getRequest());
+        System.out.println("response:" + ctx.getResponse());
         Object requestUrl = ctx.get(FilterConstants.REQUEST_URI_KEY);
         System.out.println(request.getRemoteAddr() + "访问了" + request.getRequestURI()+
                 "路由后的地址" + requestUrl.toString());

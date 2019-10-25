@@ -15,10 +15,13 @@ spring:
     name: zuul #此实例注册到eureka服务端的name
 
 zuul:
+  ignored-services: "*"
   routes:
     power:
-      serviceId: zuul-server
-      path: /zuul/**
-  ignored-services: zuul-server
+      serviceId: server-power
+      path: /power/**
+    order:
+      serviceId: server-order
+      path: /order/**
   prefix: /api
-#  strip-prefix: false  #是否跳过前缀名
+  strip-prefix: false  #是否跳过前缀名

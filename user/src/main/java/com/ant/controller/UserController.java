@@ -5,7 +5,10 @@ import com.ant.util.R;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
@@ -54,12 +57,12 @@ public class UserController {
         return R.success("操作成功", restTemplate.getForObject(POWER_URL + "/getPower.do", Object.class));
     }
 
-    @RequestMapping("/getFeign")
+    @RequestMapping(value = "/getFeign", method = RequestMethod.GET)
 //    @HystrixCommand(threadPoolKey = "getFeign",
 //        threadPoolProperties = { @HystrixProperty(name = "coreSize", value = "5")}
 //    )
     public R getFeign() {
-        System.out.println("调用了该方法......");
+//        System.out.println("调用了该方法......");
         return R.success("操作成功", powerFeignClient.getPower());
     }
 

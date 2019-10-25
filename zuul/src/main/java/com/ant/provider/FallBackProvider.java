@@ -53,7 +53,7 @@ public class FallBackProvider implements FallbackProvider {
 
             @Override
             public InputStream getBody() throws IOException {
-                return new ByteArrayInputStream("服务繁忙，请稍后再试".getBytes("gbk"));
+                return new ByteArrayInputStream("服务繁忙，请稍后再试".getBytes("utf-8"));
             }
 
             @Override
