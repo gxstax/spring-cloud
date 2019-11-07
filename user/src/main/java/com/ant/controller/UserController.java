@@ -57,14 +57,31 @@ public class UserController {
         return R.success("操作成功", restTemplate.getForObject(POWER_URL + "/getPower.do", Object.class));
     }
 
+
     @RequestMapping(value = "/getFeign", method = RequestMethod.GET)
-//    @HystrixCommand(threadPoolKey = "getFeign",
+//    @HystrixCommand(threadPoolKey = "getFeigns",
 //        threadPoolProperties = { @HystrixProperty(name = "coreSize", value = "5")}
 //    )
+//    @HystrixCommand(
+//            commandProperties = {
+//                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "10000"),
+//                    @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "3"),
+//                    @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "5000")
+//            },
+//            threadPoolProperties = {
+//                    @HystrixProperty(name = "coreSize", value = "5"),
+//                    @HystrixProperty(name = "maxQueueSize", value = "101"),
+//                    @HystrixProperty(name = "keepAliveTimeMinutes", value = "2"),
+//                    @HystrixProperty(name = "queueSizeRejectionThreshold", value = "15"),
+//                    @HystrixProperty(name = "metrics.rollingStats.numBuckets", value = "12"),
+//                    @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "1440")
+//            })
     public R getFeign() {
 //        System.out.println("调用了该方法......");
         return R.success("操作成功", powerFeignClient.getPower());
     }
+
+
 
     public R getFeignFallBack() {
         return R.error("系统维护中!!!请稍后重试!!!");

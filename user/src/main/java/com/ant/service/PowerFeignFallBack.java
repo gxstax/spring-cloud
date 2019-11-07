@@ -1,6 +1,8 @@
 package com.ant.service;
 
 import com.ant.util.R;
+import lombok.Data;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,10 +13,15 @@ import org.springframework.stereotype.Component;
  * @Version 1.0
  */
 
-@Component
+
+//@Component
 public class PowerFeignFallBack implements PowerFeignClient{
+
+    @Setter
+    private Throwable cause;
+
     @Override
     public Object getPower() {
-        return R.error("Power 服务暂时不可用!!!");
+        return R.error(cause.getMessage());
     }
 }

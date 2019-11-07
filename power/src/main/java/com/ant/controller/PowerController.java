@@ -22,10 +22,10 @@ public class PowerController {
     public Object getPower(String name) throws Exception {
         Map<String, Object> map = new HashMap<>();
         map.put("key", "hello,user, this is power! 嘿嘿嘿...");
-//        if(name == null) {
-//            throw new Exception();
-//        }
-//        Thread.sleep(10000);
+        if(name == null) {
+            throw new Exception();
+        }
+        Thread.sleep(10000);
         return map;
     }
 }

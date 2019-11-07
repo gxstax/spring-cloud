@@ -3,6 +3,7 @@ package com.ant.service;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @author Ant
@@ -14,6 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FeignClient(name = "SERVER-POWER", fallbackFactory = FallBackFactory.class)
 public interface PowerFeignClient {
 
-    @RequestMapping("/getPower.do")
+    @RequestMapping(value = "/getPower.do", method = RequestMethod.GET)
     public Object getPower();
 }

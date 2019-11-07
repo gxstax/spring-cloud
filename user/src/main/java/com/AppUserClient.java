@@ -24,7 +24,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
         @RibbonClient(name = "SERVER-ORDER" , configuration = OrderRuleConfig.class)
 })
 @EnableFeignClients
-@EnableHystrix
+//@EnableHystrix
 public class AppUserClient {
     public static void main(String[] args) {
         SpringApplication.run(AppUserClient.class);
