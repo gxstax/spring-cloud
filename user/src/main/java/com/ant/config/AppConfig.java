@@ -31,7 +31,7 @@ public class AppConfig {
 //    }
 
 //    @Bean
-//    public TomcatServletWebServerFactory tomcat(){
+//    public TomcatServletWebServerFactory tomcat() {
 //        TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
 //        tomcat.setPort(5000);
 //        return tomcat;
